@@ -53,4 +53,20 @@
         <item name="android:fontFamily">@font/roboto_slab_regular</item>
     </style>
 
+    <style name="TitleDetailsTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#f2f2f2</item>
+        <item name="android:textSize">29sp</item>
+        <item name="android:fontFamily">@font/roboto_slab_bold</item>
+    </style>
+
+    <style name="DescriptionDetailsTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#f2f2f2</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/roboto_slab_regular</item>
+    </style>
+
 </resources>

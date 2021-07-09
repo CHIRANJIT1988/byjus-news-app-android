@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 public class NewsArticleAdapter extends BaseAdapter<NewsArticleAdapter.NewsArticleViewHolder, Article> {
 
-    private List<Article> articleList;
+    private final List<Article> articleList;
     private OnItemClicked callback;
 
     @Inject
@@ -58,11 +58,13 @@ public class NewsArticleAdapter extends BaseAdapter<NewsArticleAdapter.NewsArtic
             return new NewsArticleViewHolder(binding, callback);
         }
 
-        private AdapterNewsHeadingBinding binding;
+        private final AdapterNewsHeadingBinding binding;
 
         NewsArticleViewHolder(AdapterNewsHeadingBinding binding, OnItemClicked callback) {
             super(binding.getRoot());
             this.binding = binding;
+
+            binding.getRoot().setOnClickListener(v -> callback.onItemClick(binding.getModel()));
         }
 
         private void onBind(Article model) {

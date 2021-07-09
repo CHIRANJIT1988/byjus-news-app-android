@@ -2,8 +2,10 @@ package com.byjus.news.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 //@Entity(tableName = "news_articles")
-public class Article {
+public class Article implements Serializable {
     //@PrimaryKey(autoGenerate = true)
     //private int id;
 
@@ -88,7 +90,7 @@ public class Article {
         this.content = content;
     }
 
-    public static class Source {
+    public static class Source implements Serializable {
         @SerializedName("id")
         private String id;
         @SerializedName("name")

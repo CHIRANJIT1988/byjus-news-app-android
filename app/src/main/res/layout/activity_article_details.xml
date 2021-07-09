@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.byjus.news.viewmodel.details.ArticleDetailsViewModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.details.ArticleDetailsActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:bannerUrl="@{viewModel.articleMutableLiveData.urlToImage}" />
+
+        <TextView
+            android:id="@+id/label_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="24dp"
+            style="@style/TitleDetailsTextViewStyle"
+            android:layout_above="@+id/label_description"
+            android:layout_marginBottom="64dp"
+            android:text="@{viewModel.articleMutableLiveData.title}"/>
+
+        <TextView
+            android:id="@+id/label_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="24dp"
+            android:layout_alignParentBottom="true"
+            style="@style/DescriptionDetailsTextViewStyle"
+            android:text="@{viewModel.articleMutableLiveData.description}"/>
+
+    </RelativeLayout>
+
+</layout>

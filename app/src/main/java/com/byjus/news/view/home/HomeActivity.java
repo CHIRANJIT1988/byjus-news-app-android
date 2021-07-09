@@ -1,5 +1,6 @@
 package com.byjus.news.view.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.byjus.news.R;
 import com.byjus.news.databinding.ActivityHomeBinding;
+import com.byjus.news.model.Article;
 import com.byjus.news.view.base.BaseViewModelActivity;
+import com.byjus.news.view.details.ArticleDetailsActivity;
 import com.byjus.news.viewmodel.home.HomeViewModel;
 
 import javax.inject.Inject;
@@ -57,5 +60,10 @@ public class HomeActivity extends BaseViewModelActivity<HomeViewModel, ActivityH
     private void initArticleAdapter(RecyclerView recyclerView) {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
+        adapter.setOnItemClickListener(model ->  {
+            Intent intent = new Intent(HomeActivity.this, ArticleDetailsActivity.class);
+            intent.putExtra("ARTICLE", model);
+            startActivity(intent);
+        });
     }
 }
