@@ -3,8 +3,10 @@ package com.byjus.news.di.component;
 import android.app.Application;
 
 import com.byjus.news.ByjuApplication;
+import com.byjus.news.di.module.AdapterLayoutModule;
 import com.byjus.news.di.module.ApplicationModule;
 import com.byjus.news.di.module.BuildersModule;
+import com.byjus.news.di.module.DataModule;
 import com.byjus.news.di.module.NetworkModule;
 import com.byjus.news.di.module.RoomModule;
 
@@ -20,6 +22,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         ApplicationModule.class,
         AndroidSupportInjectionModule.class,
         AndroidInjectionModule.class,
+        AdapterLayoutModule.class,
+        DataModule.class,
         BuildersModule.class,
         NetworkModule.class,
         RoomModule.class })

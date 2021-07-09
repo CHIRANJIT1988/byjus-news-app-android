@@ -1,10 +1,7 @@
 package com.byjus.news.view.base;
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;

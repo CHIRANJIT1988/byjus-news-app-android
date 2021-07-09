@@ -6,25 +6,25 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.byjus.news.model.NewsModel;
+import com.byjus.news.model.Article;
 
 import java.util.List;
 
 @Dao
-public interface NewsDao {
+public interface ArticleDao {
 
-    @Query("SELECT * FROM news_headlines")
-    List<NewsModel> getAll();
+    @Query("SELECT * FROM Article")
+    List<Article> getAll();
 
-    @Query("SELECT COUNT(*) FROM news_headlines")
+    @Query("SELECT COUNT(*) FROM Article")
     int count();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    long insert(NewsModel model);
+    long insert(Article model);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    long[] insertAll(List<NewsModel> model);
+    long[] insertAll(List<Article> model);
 
     @Delete
-    void delete(NewsModel model);
+    void delete(Article model);
 }

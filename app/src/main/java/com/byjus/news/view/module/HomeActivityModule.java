@@ -6,4 +6,6 @@ import com.byjus.news.di.ui_modules.BaseActivityModule;
 import dagger.Module;
 
 @Module
-public class HomeActivityModule extends BaseActivityModule<HomeActivity> {}
+public class HomeActivityModule extends BaseActivityModule<HomeActivity> {
+
+}
