@@ -2,13 +2,13 @@ package com.byjus.news.view.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.byjus.news.R;
 import com.byjus.news.databinding.ActivityHomeBinding;
-import com.byjus.news.model.Article;
 import com.byjus.news.view.base.BaseViewModelActivity;
 import com.byjus.news.view.details.ArticleDetailsActivity;
 import com.byjus.news.viewmodel.home.HomeViewModel;
@@ -46,9 +46,10 @@ public class HomeActivity extends BaseViewModelActivity<HomeViewModel, ActivityH
         initArticleAdapter(dataBinding.articleList);
 
         viewModel.getAllArticles().observe(this, data -> {
-
-            if(data != null && data.getArticles() != null) {
-                adapter.setData(data.getArticles());
+            if(data != null) {
+                adapter.setData(data);
+            } else {
+                Toast.makeText(getApplicationContext(), "Failed to Load Articles", Toast.LENGTH_LONG).show();
             }
         });
     }

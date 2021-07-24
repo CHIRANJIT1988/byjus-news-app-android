@@ -5,23 +5,31 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
-import com.byjus.news.data.remote.repository.NewsArticleResponse;
 import com.byjus.news.data.remote.repository.NewsArticleRepository;
+import com.byjus.news.helper.network.NetworkUtils;
+import com.byjus.news.model.Article;
 import com.byjus.news.viewmodel.base.BaseViewModel;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 public class HomeViewModel extends BaseViewModel {
 
-    private NewsArticleRepository repository;
+    @Inject
+    public NewsArticleRepository repository;
+    @Inject
+    public NetworkUtils networkUtils;
 
     @Inject
-    public HomeViewModel(@NonNull Application application, NewsArticleRepository repository) {
+    public HomeViewModel(@NonNull Application application) {
         super(application);
-        this.repository = repository;
     }
 
-    public LiveData<NewsArticleResponse> getAllArticles() {
-        return repository.getAllArticles();
+    public LiveData<List<Article>> getAllArticles() {
+        if(networkUtils.isOnline()) {
+            return repository.getAllArticlesFromRemote();
+        }
+        return repository.getAllArticlesFromLocal();
     }
 }

@@ -8,6 +8,7 @@ import com.byjus.news.di.module.ApplicationModule;
 import com.byjus.news.di.module.BuildersModule;
 import com.byjus.news.di.module.DataModule;
 import com.byjus.news.di.module.NetworkModule;
+import com.byjus.news.di.module.RepositoryModule;
 import com.byjus.news.di.module.RoomModule;
 
 import javax.inject.Singleton;
@@ -24,6 +25,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidInjectionModule.class,
         AdapterLayoutModule.class,
         DataModule.class,
+        RepositoryModule.class,
         BuildersModule.class,
         NetworkModule.class,
         RoomModule.class })

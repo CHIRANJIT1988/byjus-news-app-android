@@ -1,13 +1,19 @@
 package com.byjus.news.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.byjus.news.data.dao.ArticleSourceTypeConverter;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-//@Entity(tableName = "news_articles")
+@Entity(tableName = "news_articles")
+@TypeConverters(ArticleSourceTypeConverter.class)
 public class Article implements Serializable {
-    //@PrimaryKey(autoGenerate = true)
-    //private int id;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
     @SerializedName("source")
     private Source source;
@@ -88,6 +94,14 @@ public class Article implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public static class Source implements Serializable {

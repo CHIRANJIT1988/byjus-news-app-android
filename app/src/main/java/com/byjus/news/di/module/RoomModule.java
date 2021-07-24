@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import com.byjus.news.data.DatabaseInitializer;
 import com.byjus.news.data.dao.ArticleDao;
 import com.byjus.news.data.local.AppDatabase;
 import com.byjus.news.di.annotation.ApplicationContext;
@@ -29,6 +30,17 @@ public class RoomModule {
     @Singleton
     @Provides
     ArticleDao provideNewsDao(AppDatabase database) {
-        return database.newsDao();
+        return database.articleDao();
+    }
+
+    /**
+     * Provides DatabaseInitializer instance
+     * @param database
+     * @return
+     */
+    @Provides
+    @Singleton
+    DatabaseInitializer provideInitializer(AppDatabase database) {
+        return new DatabaseInitializer(database);
     }
 }

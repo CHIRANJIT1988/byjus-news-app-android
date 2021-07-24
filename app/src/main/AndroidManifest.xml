@@ -3,6 +3,7 @@
     package="com.byjus.news">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".ByjuApplication"
@@ -12,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppFullScreenTheme">
-        <activity android:name=".view.details.ArticleDetailsActivity"></activity>
+        <activity android:name=".view.details.ArticleDetailsActivity" />
         <activity
             android:name=".view.home.HomeActivity"
             android:theme="@style/MyTheme">
