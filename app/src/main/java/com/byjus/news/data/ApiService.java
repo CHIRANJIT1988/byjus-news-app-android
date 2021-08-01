@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-    @GET("everything?q=tesla&from=2021-07-20&sortBy=publishedAt&apiKey=309f04df5726481897ff4fdc9857c12e")
+    @GET("everything?q=tesla&from=2021-07-30&sortBy=publishedAt&apiKey=309f04df5726481897ff4fdc9857c12e")
     Single<NewsArticleResponse> getAllArticles();
 }

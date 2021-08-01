@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.byjus.news.R;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
@@ -31,6 +33,7 @@ public abstract class BaseViewModelActivity<V extends ViewModel, D extends ViewD
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.from_right_in, R.anim.from_left_out);
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModel());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
@@ -38,6 +41,12 @@ public abstract class BaseViewModelActivity<V extends ViewModel, D extends ViewD
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return fragmentAndroidInjector;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_left_in, R.anim.from_right_out);
     }
 
     @Override

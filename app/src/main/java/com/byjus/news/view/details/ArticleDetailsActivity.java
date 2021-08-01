@@ -1,6 +1,7 @@
 package com.byjus.news.view.details;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.byjus.news.R;
 import com.byjus.news.databinding.ActivityArticleDetailsBinding;
@@ -29,5 +30,9 @@ public class ArticleDetailsActivity extends BaseViewModelActivity<ArticleDetails
 
         Article article = (Article) getIntent().getSerializableExtra("ARTICLE");
         viewModel.setArticle(article);
+    }
+
+    public void onBackButtonClick(View view) {
+        finish();
     }
 }

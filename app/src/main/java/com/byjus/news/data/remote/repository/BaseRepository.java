@@ -22,4 +22,10 @@ public abstract class BaseRepository {
     public AndroidDisposable getDisposables() {
         return disposables;
     }
+
+    public enum Status {
+        PROGRESS,
+        SUCCESS,
+        FAILED
+    }
 }

@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
+import com.byjus.news.data.remote.repository.BaseRepository;
 import com.byjus.news.data.remote.repository.NewsArticleRepository;
 import com.byjus.news.helper.network.NetworkUtils;
 import com.byjus.news.model.Article;
@@ -27,6 +28,14 @@ public class HomeViewModel extends BaseViewModel {
     }
 
     public LiveData<List<Article>> getAllArticles() {
+        repository.getStatusMutableLiveData().observeForever(status -> {
+            if(status == BaseRepository.Status.PROGRESS) {
+                getProgress().setValue(true);
+            } else {
+                getProgress().setValue(false);
+            }
+        });
+
         if(networkUtils.isOnline()) {
             return repository.getAllArticlesFromRemote();
         }

@@ -21,6 +21,12 @@
             android:id="@+id/layout_toolbar"
             layout="@layout/layout_appbar" />
 
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="@{viewModel.mProgress ? View.VISIBLE : View.GONE}"
+            android:layout_gravity="center_vertical|center_horizontal" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/article_list"
             android:layout_width="match_parent"

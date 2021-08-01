@@ -8,13 +8,17 @@ import androidx.lifecycle.MutableLiveData;
 
 public abstract class BaseViewModel extends AndroidViewModel {
 
-    public MutableLiveData<Action> mAction = new MutableLiveData<>();
+    public MutableLiveData<Boolean> mProgress = new MutableLiveData<>();
 
     public BaseViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public enum Action {
-        ACTIVITY_FINISH
+    public MutableLiveData<Boolean> getProgress() {
+        return mProgress;
+    }
+
+    public void setProgress(MutableLiveData<Boolean> mProgress) {
+        this.mProgress = mProgress;
     }
 }

@@ -13,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppFullScreenTheme">
-        <activity android:name=".view.details.ArticleDetailsActivity" />
         <activity
-            android:name=".view.home.HomeActivity"
-            android:theme="@style/MyTheme">
+            android:name=".view.details.ArticleDetailsActivity"
+            android:theme="@style/MyTheme"/>
+        <activity
+            android:name=".view.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

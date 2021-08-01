@@ -27,21 +27,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="24dp"
-            style="@style/TitleDetailsTextViewStyle"
-            android:layout_above="@+id/label_description"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="64dp"
+            style="@style/TitleDetailsTextViewStyle"
+            android:layout_above="@+id/label_source"
             android:text="@{viewModel.articleMutableLiveData.title}"/>
+
+        <TextView
+            android:id="@+id/label_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/label_description"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textSize="20sp"
+            android:textColor="#f2f2f2"
+            style="@style/SourceTextViewStyle"
+            android:text="@{viewModel.articleMutableLiveData.source.name}"/>
+
+        <TextView
+            android:id="@+id/label_published"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/label_description"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textSize="20sp"
+            android:textColor="#f2f2f2"
+            style="@style/PublishedTextViewStyle"
+            android:text="@{viewModel.getPublishedDate(viewModel.articleMutableLiveData.publishedAt)}"/>
 
         <TextView
             android:id="@+id/label_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
             android:layout_alignParentBottom="true"
             style="@style/DescriptionDetailsTextViewStyle"
+            android:textColor="#bababa"
             android:text="@{viewModel.articleMutableLiveData.description}"/>
+
+        <ImageButton
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/ic_oval_shape"
+            android:src="@drawable/ic_arrow_back"
+            android:onClick="onBackButtonClick"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"/>
 
     </RelativeLayout>
 

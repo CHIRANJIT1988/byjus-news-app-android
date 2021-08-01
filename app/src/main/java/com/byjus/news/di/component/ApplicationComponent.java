@@ -7,6 +7,7 @@ import com.byjus.news.di.module.AdapterLayoutModule;
 import com.byjus.news.di.module.ApplicationModule;
 import com.byjus.news.di.module.BuildersModule;
 import com.byjus.news.di.module.DataModule;
+import com.byjus.news.di.module.DatetimeFormatterModule;
 import com.byjus.news.di.module.NetworkModule;
 import com.byjus.news.di.module.RepositoryModule;
 import com.byjus.news.di.module.RoomModule;
@@ -28,6 +29,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         RepositoryModule.class,
         BuildersModule.class,
         NetworkModule.class,
+        DatetimeFormatterModule.class,
         RoomModule.class })
 public interface ApplicationComponent {
 

@@ -20,9 +20,15 @@ public class NewsArticleRepository extends BaseRepository {
 
     private static final String TAG = NewsArticleRepository.class.getSimpleName();
 
+    public MutableLiveData<Status> statusMutableLiveData = new MutableLiveData<>();
+
     @Inject
     public NewsArticleRepository(ApiService service, ArticleDao articleDao) {
         super(service, articleDao);
+    }
+
+    public MutableLiveData<Status> getStatusMutableLiveData() {
+        return statusMutableLiveData;
     }
 
     public LiveData<List<Article>> getAllArticlesFromRemote() {
@@ -30,18 +36,18 @@ public class NewsArticleRepository extends BaseRepository {
         apiService.getAllArticles()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                //.doOnSubscribe(d -> statusMutableLiveData.postValue(Status.PROGRESS))
+                .doOnSubscribe(d -> statusMutableLiveData.postValue(Status.PROGRESS))
                 .subscribe(new DisposableSingleObserver<NewsArticleResponse>() {
                     @Override
                     public void onSuccess(@NonNull NewsArticleResponse response) {
-                        //statusMutableLiveData.postValue(Status.SUCCESS);
+                        statusMutableLiveData.postValue(Status.SUCCESS);
                         data.setValue(response.getArticles());
                         articleDao.deleteAll();
                         articleDao.insertAll(response.getArticles());
                     }
                     @Override
                     public void onError(@NonNull Throwable throwable) {
-                        //statusMutableLiveData.postValue(Status.FAILED);
+                        statusMutableLiveData.postValue(Status.FAILED);
                         data.setValue(null);
                     }
                 });
@@ -54,16 +60,16 @@ public class NewsArticleRepository extends BaseRepository {
         articleDao.getAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                //.doOnSubscribe(d -> statusMutableLiveData.postValue(Status.PROGRESS))
+                .doOnSubscribe(d -> statusMutableLiveData.postValue(Status.PROGRESS))
                 .subscribe(new DisposableSingleObserver<List<Article>>() {
                     @Override
                     public void onSuccess(@NonNull List<Article> articleList) {
-                        //statusMutableLiveData.postValue(Status.SUCCESS);
+                        statusMutableLiveData.postValue(Status.SUCCESS);
                         data.setValue(articleList);
                     }
                     @Override
                     public void onError(@NonNull Throwable throwable) {
-                        //statusMutableLiveData.postValue(Status.FAILED);
+                        statusMutableLiveData.postValue(Status.FAILED);
                         data.setValue(null);
                     }
                 });
